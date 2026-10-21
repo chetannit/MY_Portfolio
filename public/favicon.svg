@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="ctGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="#0c1017" stroke="url(#ctGrad)" stroke-width="4"/>
+  <text x="50" y="62" font-family="'JetBrains Mono', monospace" font-size="38" font-weight="700" fill="url(#ctGrad)" text-anchor="middle">&lt;CT/&gt;</text>
+</svg>
