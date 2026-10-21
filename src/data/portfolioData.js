@@ -26,7 +26,7 @@ export const personalInfo = {
   email: "chetarthakur.dev@example.com", // [Editable Placeholder: Update with your primary email]
   emailDisplay: "your.email@domain.com",  // [Editable Placeholder]
   linkedin: "https://linkedin.com/in/your-profile", // [Editable Placeholder]
-  location: "Open to Remote & On-Site Roles", // [Editable Placeholder: e.g., City, Country]
+  location: "Prayagraj, India",
 };
 
 export const navLinks = [
@@ -216,19 +216,20 @@ export const experienceData = {
  * "Do not invent educational qualifications. Leave unspecified details blank or clearly marked for editing."
  */
 export const educationData = {
-  isConfigured: false, // Set to true once verified degree details are provided
-  placeholderNote: "Educational background details can be customized directly in the portfolio configuration.",
+  isConfigured: true,
+  placeholderNote: "",
   templates: [
     {
-      degree: "[Your Degree / Field of Study - e.g., Bachelor of Technology in Computer Science]",
-      institution: "[Your University / College / Institute Name]",
-      graduationYear: "[Graduation Year - e.g., 2024 / Expected 2025]",
-      location: "[City, Country]",
+      degree: "Bachelor of Technology (B.Tech)",
+      institution: "Motilal Nehru National Institute of Technology Allahabad",
+      graduationYear: "Graduating 2026",
+      location: "Prayagraj, India",
       coursework: [
         "Data Structures & Algorithms",
         "Object-Oriented Programming",
         "Database Management Systems",
-        "Web Application Development",
+        "Computer Networks",
+        "Operating Systems",
         "Machine Learning Fundamentals"
       ]
     }

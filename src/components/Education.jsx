@@ -20,7 +20,9 @@ export default function Education() {
             Academic <span className="text-gradient">Background</span>
           </h2>
           <p className="section-description">
-            Educational foundation and computer science coursework. Configured with editable placeholders.
+            {isConfigured
+              ? "Educational foundation, engineering principles, and core computer science coursework."
+              : "Educational foundation and computer science coursework. Configured with editable placeholders."}
           </p>
         </div>
 

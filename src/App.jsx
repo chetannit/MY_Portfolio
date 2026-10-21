@@ -34,7 +34,7 @@ export default function App() {
         {/* Experience Section (Discreet Editable Template) */}
         <Experience />
 
-        {/* Education Section (Editable Placeholders) */}
+        {/* Education Section */}
         <Education />
 
         {/* Certifications Section (Neutral Placeholder) */}
