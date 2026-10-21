@@ -55,11 +55,11 @@ export const aboutMe = {
 };
 
 /**
- * Technical Skills organized strictly as confirmed:
+ * Technical Skills & Core Competencies:
  * - Frontend: React, JavaScript, HTML, CSS
- * - Backend and Programming: Python, REST API development
- * - AI and Machine Learning: Machine learning, Image classification, AI application development
- * - Tools: Git, GitHub
+ * - Backend & Systems: Python, REST API development, Node.js & Express
+ * - AI & Machine Learning: ML fundamentals, Computer Vision (OpenCV), LLM integration
+ * - Developer Tools: Git, GitHub, Vite
  */
 export const skillCategories = [
   {
@@ -67,10 +67,10 @@ export const skillCategories = [
     icon: "Layout",
     description: "Building responsive, accessible, and high-performance user interfaces.",
     skills: [
-      { name: "React", level: "Confirmed", note: "Component architecture, hooks, state" },
-      { name: "JavaScript", level: "Confirmed", note: "ES6+, async/await, DOM APIs" },
-      { name: "HTML5", level: "Confirmed", note: "Semantic structure, web accessibility" },
-      { name: "CSS3", level: "Confirmed", note: "Flexbox, Grid, animations, responsive design" }
+      { name: "React", note: "Component architecture, hooks, state" },
+      { name: "JavaScript", note: "ES6+, async/await, DOM APIs" },
+      { name: "HTML5", note: "Semantic structure, web accessibility" },
+      { name: "CSS3", note: "Flexbox, Grid, animations, responsive design" }
     ]
   },
   {
@@ -78,9 +78,9 @@ export const skillCategories = [
     icon: "Server",
     description: "Constructing server logic, data endpoints, and backend architectures.",
     skills: [
-      { name: "Python", level: "Confirmed", note: "Application logic, data processing, scripting" },
-      { name: "REST API Development", level: "Confirmed", note: "Endpoint routing, JSON contracts, status codes" },
-      { name: "Node.js & Express", level: "Confirmed", note: "Server runtime, middleware, routing" }
+      { name: "Python", note: "Application logic, data processing, scripting" },
+      { name: "REST API Development", note: "Endpoint routing, JSON contracts, status codes" },
+      { name: "Node.js & Express", note: "Server runtime, middleware, routing" }
     ]
   },
   {
@@ -88,9 +88,9 @@ export const skillCategories = [
     icon: "BrainCircuit",
     description: "Applying machine learning models and integrating intelligent AI APIs.",
     skills: [
-      { name: "Machine Learning", level: "Confirmed", note: "Supervised classification, model training" },
-      { name: "Image Classification", level: "Confirmed", note: "Computer vision, feature extraction, OpenCV" },
-      { name: "AI Application Development", level: "Confirmed", note: "LLM prompt engineering, Gemini API integration" }
+      { name: "Machine Learning", note: "Supervised classification, model training" },
+      { name: "Image Classification", note: "Computer vision, feature extraction, OpenCV" },
+      { name: "AI Application Development", note: "LLM prompt engineering, Gemini API integration" }
     ]
   },
   {
@@ -98,9 +98,9 @@ export const skillCategories = [
     icon: "Wrench",
     description: "Version control, collaboration, and modern development tooling.",
     skills: [
-      { name: "Git", level: "Confirmed", note: "Branching, committing, staging, history" },
-      { name: "GitHub", level: "Confirmed", note: "Repository hosting, PRs, documentation" },
-      { name: "Vite", level: "Confirmed", note: "Modern frontend build tooling" }
+      { name: "Git", note: "Branching, committing, staging, history" },
+      { name: "GitHub", note: "Repository hosting, PRs, documentation" },
+      { name: "Vite", note: "Modern frontend build tooling" }
     ]
   }
 ];
