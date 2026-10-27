@@ -1,6 +1,6 @@
 import React from 'react';
 import { certificationsData } from '../data/portfolioData';
-import { Award, ShieldAlert, ExternalLink, Calendar, PlusCircle, Edit3 } from 'lucide-react';
+import { Award, ExternalLink, Calendar, Edit3 } from 'lucide-react';
 import './Certifications.css';
 
 export default function Certifications() {
@@ -14,13 +14,13 @@ export default function Certifications() {
         <div className="section-header">
           <div className="section-tag">
             <Award size={13} aria-hidden="true" />
-            <span>06. Certifications</span>
+            <span>06. Credentials &amp; Focus</span>
           </div>
           <h2 className="section-title">
-            Professional <span className="text-gradient">Certifications</span>
+            Core Credentials &amp; <span className="text-gradient">Specializations</span>
           </h2>
           <p className="section-description">
-            Verified credentials and specializations. Neutral placeholder displayed until details are provided.
+            Foundational competencies, production architecture practices, and applied AI specializations.
           </p>
         </div>
 

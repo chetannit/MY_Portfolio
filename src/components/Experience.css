@@ -6,226 +6,237 @@
   background-color: var(--bg-primary);
 }
 
-.experience-placeholder-wrapper {
-  max-width: 860px;
+.experience-timeline-container {
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-/* Status Card */
-.experience-status-card {
-  padding: 2rem;
-  background: linear-gradient(145deg, rgba(16, 185, 129, 0.05) 0%, rgba(12, 16, 23, 0.6) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+/* Experience Card */
+.experience-card {
+  padding: 2.25rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
-.status-header {
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--grad-accent);
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.08);
+}
+
+/* Header Row */
+.exp-card-header {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1.5rem;
 }
 
-.status-icon-box {
-  width: 44px;
-  height: 44px;
+.exp-role-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.exp-icon-box {
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.status-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.status-subtitle {
-  font-size: 0.88rem;
-  color: #34d399;
-}
-
-.status-description {
-  font-size: 0.94rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-.verified-work-callout {
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-}
-
-.callout-heading {
-  font-size: 0.78rem;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
-}
-
-.verified-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.v-pill {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  padding: 0.3rem 0.65rem;
-  border-radius: 4px;
-}
-
-/* Template Card */
-.experience-template-card {
-  padding: 2rem;
-  border: 1px dashed rgba(255, 255, 255, 0.15);
-  background: rgba(12, 16, 23, 0.5);
-}
-
-.template-top-bar {
+.exp-role-title-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px dashed var(--border-subtle);
-}
-
-.template-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--accent-cyan);
-  font-weight: 600;
-}
-
-.template-hint {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-/* Timeline Layout */
-.timeline-item {
-  position: relative;
-  padding-left: 2rem;
-  border-left: 2px solid rgba(56, 189, 248, 0.25);
-  margin-left: 0.5rem;
-}
-
-.timeline-marker {
-  position: absolute;
-  top: 0;
-  left: -7px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent-cyan);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
-}
-
-.timeline-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.timeline-role {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
-.timeline-company {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--accent-cyan);
+.exp-role-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.timeline-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.meta-badge {
+.exp-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.04);
-  padding: 0.2rem 0.55rem;
-  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
 }
 
-.responsibilities-title {
-  font-size: 0.8rem;
+.exp-company-name {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+/* Meta Pills */
+.exp-meta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.exp-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+}
+
+.exp-type-pill {
+  color: var(--accent-indigo);
+  border-color: rgba(129, 140, 248, 0.25);
+  background: rgba(129, 140, 248, 0.08);
+}
+
+/* Summary */
+.exp-summary-text {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #e2e8f0;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--accent-cyan);
+  padding: 0.75rem 1rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Responsibilities */
+.exp-section-subtitle {
+  font-size: 0.82rem;
   font-family: var(--font-mono);
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 0.6rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.85rem;
 }
 
-.responsibilities-list {
+.exp-responsibilities-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  margin-bottom: 1.25rem;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
-.responsibility-item {
+.exp-resp-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-  line-height: 1.55;
+  gap: 0.75rem;
+  font-size: 0.93rem;
+  line-height: 1.6;
   color: #cbd5e1;
 }
 
-.timeline-achievements {
-  background: rgba(56, 189, 248, 0.04);
-  border: 1px solid rgba(56, 189, 248, 0.15);
-  border-radius: var(--radius-sm);
-  padding: 0.85rem 1rem;
+.exp-check-icon {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
 }
 
-.achievement-title {
+/* Achievements */
+.exp-achievements-box {
+  background: rgba(56, 189, 248, 0.04);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.exp-achievement-header {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
+  gap: 0.5rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--accent-cyan);
-  margin-bottom: 0.4rem;
+  font-family: var(--font-mono);
+  margin-bottom: 0.65rem;
 }
 
-.achievements-list {
+.exp-achievements-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.exp-achievements-list li {
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  line-height: 1.55;
+  position: relative;
   padding-left: 1.25rem;
-  font-size: 0.85rem;
-  color: #cbd5e1;
-  line-height: 1.5;
+}
+
+.exp-achievements-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+}
+
+/* Tech Row */
+.exp-tech-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.exp-tech-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.exp-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }

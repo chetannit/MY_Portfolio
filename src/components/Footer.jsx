@@ -1,11 +1,13 @@
 import React from 'react';
 import { personalInfo, navLinks } from '../data/portfolioData';
-import { ArrowUp, Heart, Code2 } from 'lucide-react';
-import { GithubIcon } from './SocialIcons';
+import { ArrowUp } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import './Footer.css';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = CURRENT_YEAR;
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -33,7 +35,7 @@ export default function Footer() {
             </a>
             
             <p className="footer-tagline">
-              Building modern, performant web applications and intelligent AI/ML solutions using React and Python.
+              Architecting resilient full-stack systems, transaction-safe database architectures, and multilingual AI pipelines.
             </p>
 
             <div className="footer-social-links">
@@ -47,6 +49,18 @@ export default function Footer() {
               >
                 <GithubIcon size={18} />
                 <span>github.com/{personalInfo.githubUsername}</span>
+              </a>
+
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-btn"
+                aria-label="LinkedIn Profile (opens in new tab)"
+                title="View Chetan Thakur on LinkedIn"
+              >
+                <LinkedinIcon size={18} />
+                <span>linkedin.com/in/{personalInfo.linkedinUsername}</span>
               </a>
             </div>
           </div>
@@ -71,6 +85,26 @@ export default function Footer() {
             <ul className="footer-nav-list">
               <li>
                 <a
+                  href="https://github.com/chetannit/Splitmint"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-nav-link"
+                >
+                  SplitMint Settlement Engine
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/chetannit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-nav-link"
+                >
+                  NIFN Multilingual RAG
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://github.com/chetannit/AI-customer-Bot"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -87,16 +121,6 @@ export default function Footer() {
                   className="footer-nav-link"
                 >
                   Image Classifier
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/chetannit/Splitmint"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-nav-link"
-                >
-                  SplitMint Expense Platform
                 </a>
               </li>
             </ul>

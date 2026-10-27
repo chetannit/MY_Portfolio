@@ -1,15 +1,73 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { ArrowRight, Code2, Terminal, Sparkles, CheckCircle2, Copy, Check } from 'lucide-react';
-import { GithubIcon } from './SocialIcons';
+import { 
+  ArrowRight, 
+  Terminal, 
+  Sparkles, 
+  CheckCircle2, 
+  Copy, 
+  Check, 
+  Phone, 
+  MapPin, 
+  Zap
+} from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import './Hero.css';
 
 const codeSnippets = {
+  splitmint: {
+    filename: 'debtSettlementEngine.js',
+    language: 'JavaScript',
+    title: 'SplitMint Two-Pointer Simplification',
+    lines: [
+      { text: '// Greedy Two-Pointer Debt Simplification Algorithm (reduces tx by ~65%)', color: 'comment' },
+      { text: 'export function simplifyDebts(netBalancesInCents) {', color: 'keyword' },
+      { text: '  const debtors = [], creditors = [];', color: 'standard' },
+      { text: '  // Deterministic integer-cent arithmetic (0 IEEE 754 float drift)', color: 'comment' },
+      { text: '  for (const [id, balance] of netBalancesInCents.entries()) {', color: 'keyword' },
+      { text: '    if (balance < 0) debtors.push({ id, owes: -balance });', color: 'standard' },
+      { text: '    else if (balance > 0) creditors.push({ id, receives: balance });', color: 'standard' },
+      { text: '  }', color: 'standard' },
+      { text: '  const settlements = [];', color: 'standard' },
+      { text: '  let i = 0, j = 0;', color: 'standard' },
+      { text: '  while (i < debtors.length && j < creditors.length) {', color: 'keyword' },
+      { text: '    const settleAmount = Math.min(debtors[i].owes, creditors[j].receives);', color: 'standard' },
+      { text: '    settlements.push({ from: debtors[i].id, to: creditors[j].id, cents: settleAmount });', color: 'standard' },
+      { text: '    debtors[i].owes -= settleAmount; creditors[j].receives -= settleAmount;', color: 'standard' },
+      { text: '    if (debtors[i].owes === 0) i++;', color: 'standard' },
+      { text: '    if (creditors[j].receives === 0) j++;', color: 'standard' },
+      { text: '  }', color: 'keyword' },
+      { text: '  return settlements; // Minimized peer-to-peer settlement graph', color: 'return' },
+      { text: '}', color: 'keyword' }
+    ]
+  },
+  rag: {
+    filename: 'multilingual_rag.py',
+    language: 'Python (FastAPI)',
+    title: 'NIFN Multilingual RAG Pipeline',
+    lines: [
+      { text: '# Multilingual RAG Hybrid Retrieval (BM25 + Dense Qdrant Vector)', color: 'comment' },
+      { text: 'from fastapi import FastAPI, Depends', color: 'import' },
+      { text: 'from qdrant_client import AsyncQdrantClient', color: 'import' },
+      { text: '', color: 'standard' },
+      { text: '@app.post("/api/v1/docs/rag-query")', color: 'keyword' },
+      { text: 'async def query_technical_docs(req: DocQuery, cache: Redis = Depends(get_cache)):', color: 'keyword' },
+      { text: '    cache_key = f"nifn:rag:{req.language}:{req.query_hash}"', color: 'standard' },
+      { text: '    if cached := await cache.get(cache_key): return json.loads(cached)', color: 'standard' },
+      { text: '    ', color: 'standard' },
+      { text: '    # Hybrid Fusion: Dense vector search + BM25 sparse keyword matching', color: 'comment' },
+      { text: '    dense_hits = await qdrant.search(collection="nifn_docs", vector=req.embedding)', color: 'standard' },
+      { text: '    bm25_hits = bm25_engine.search(req.query, k=10, lang=req.language)', color: 'standard' },
+      { text: '    fused = reciprocal_rank_fusion(dense_hits, bm25_hits, top_k=5)', color: 'standard' },
+      { text: '    return await generate_reranked_answer(req.query, fused)', color: 'return' }
+    ]
+  },
   gemini: {
     filename: 'aiSupportBot.js',
     language: 'JavaScript',
+    title: 'AI Customer Bot & Escalation',
     lines: [
-      { text: '// Google Gemini AI integration with multi-turn context', color: 'comment' },
+      { text: '// Google Gemini AI integration with multi-turn context & FAQ scoring', color: 'comment' },
       { text: 'import { GoogleGenerativeAI } from "@google/generative-ai";', color: 'import' },
       { text: 'const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);', color: 'standard' },
       { text: '', color: 'standard' },
@@ -23,45 +81,11 @@ const codeSnippets = {
       { text: '  return detectEscalation(response.text);', color: 'return' },
       { text: '}', color: 'keyword' }
     ]
-  },
-  classifier: {
-    filename: 'image_classifier.py',
-    language: 'Python',
-    lines: [
-      { text: '# Feature extraction: Wavelet transform + Haar Cascade', color: 'comment' },
-      { text: 'import cv2, pywt, joblib, numpy as np', color: 'import' },
-      { text: '', color: 'standard' },
-      { text: 'def extract_wavelet_features(img, mode="haar", level=1):', color: 'keyword' },
-      { text: '    gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)', color: 'standard' },
-      { text: '    coeffs = pywt.wavedec2(np.float32(gray)/255, mode, level)', color: 'standard' },
-      { text: '    coeffs_H = list(coeffs); coeffs_H[0] *= 0', color: 'standard' },
-      { text: '    return pywt.waverec2(coeffs_H, mode) * 255', color: 'return' },
-      { text: '', color: 'standard' },
-      { text: 'def classify_image(base64_img):', color: 'keyword' },
-      { text: '    cropped_faces = get_cropped_face_if_2_eyes(base64_img)', color: 'standard' },
-      { text: '    return model.predict_proba(combined_features)', color: 'return' }
-    ]
-  },
-  splitmint: {
-    filename: 'settlementEngine.js',
-    language: 'JavaScript',
-    lines: [
-      { text: '// SplitMint balance settlement & debt minimization', color: 'comment' },
-      { text: 'export function computeNetBalances(participants, expenses) {', color: 'keyword' },
-      { text: '  const balances = new Map();', color: 'standard' },
-      { text: '  expenses.forEach(({ payerId, splits, amount }) => {', color: 'standard' },
-      { text: '    balances.set(payerId, (balances.get(payerId) || 0) + amount);', color: 'standard' },
-      { text: '    splits.forEach(s => balances.set(s.userId, balances.get(s.userId) - s.owed));', color: 'standard' },
-      { text: '  });', color: 'standard' },
-      { text: '  // Settle debtor balances with creditors in O(n log n)', color: 'comment' },
-      { text: '  return generateSettlementTransactions(balances);', color: 'return' },
-      { text: '}', color: 'keyword' }
-    ]
   }
 };
 
 export default function Hero() {
-  const [activeTab, setActiveTab] = useState('gemini');
+  const [activeTab, setActiveTab] = useState('splitmint');
   const [copied, setCopied] = useState(false);
   const [imageError, setImageError] = useState(false);
 
@@ -94,7 +118,7 @@ export default function Hero() {
           <h1 className="hero-headline">
             {personalInfo.heroHeadline.split('&')[0]} &amp;{' '}
             <span className="text-gradient">
-              {personalInfo.heroHeadline.split('&')[1]?.trim() || "Intelligent Solutions."}
+              {personalInfo.heroHeadline.split('&')[1]?.trim() || "Applied AI Systems."}
             </span>
           </h1>
 
@@ -110,27 +134,31 @@ export default function Hero() {
           {/* Technology Badges */}
           <div className="hero-tech-pills">
             <span className="tech-pill">
-              <span className="pill-dot react-dot" /> React
+              <span className="pill-dot node-dot" /> Python &amp; FastAPI
             </span>
             <span className="tech-pill">
-              <span className="pill-dot python-dot" /> Python
+              <span className="pill-dot react-dot" /> React.js &amp; Next.js
             </span>
             <span className="tech-pill">
-              <span className="pill-dot ai-dot" /> AI / ML
+              <span className="pill-dot ai-dot" /> PostgreSQL &amp; Redis
             </span>
             <span className="tech-pill">
-              <span className="pill-dot node-dot" /> Node.js &amp; Express
+              <span className="pill-dot python-dot" /> RAG &amp; Qdrant
             </span>
             <span className="tech-pill">
-              <span className="pill-dot cv-dot" /> OpenCV &amp; Scikit-Learn
+              <span className="pill-dot cv-dot" /> Pytest &amp; Docker
             </span>
           </div>
 
           {/* Hero Action Buttons */}
           <div className="hero-actions">
             <a href="#projects" className="btn btn-primary">
-              <span>View My Projects</span>
+              <span>Explore Projects</span>
               <ArrowRight size={18} aria-hidden="true" />
+            </a>
+
+            <a href="#experience" className="btn btn-secondary">
+              <span>View Experience</span>
             </a>
 
             <a
@@ -138,13 +166,25 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary"
+              aria-label="View Chetan Thakur's GitHub (opens in new tab)"
             >
               <GithubIcon size={18} aria-hidden="true" />
-              <span>Explore My GitHub</span>
+              <span>GitHub</span>
+            </a>
+
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+              aria-label="View Chetan Thakur's LinkedIn Profile (opens in new tab)"
+            >
+              <LinkedinIcon size={18} aria-hidden="true" />
+              <span>LinkedIn</span>
             </a>
           </div>
 
-          {/* Profile summary badge with GitHub avatar */}
+          {/* Profile summary badge with GitHub avatar & Quick Contacts */}
           <div className="hero-profile-summary">
             <div className="hero-avatar-frame">
               {!imageError ? (
@@ -153,8 +193,8 @@ export default function Hero() {
                   alt={personalInfo.name}
                   className="hero-avatar-img"
                   onError={() => setImageError(true)}
-                  width="52"
-                  height="52"
+                  width="54"
+                  height="54"
                 />
               ) : (
                 <div className="hero-avatar-placeholder">CT</div>
@@ -162,7 +202,16 @@ export default function Hero() {
             </div>
             <div className="hero-avatar-info">
               <span className="hero-avatar-name">{personalInfo.name}</span>
-              <span className="hero-avatar-role">@{personalInfo.githubUsername} • Full-Stack Developer</span>
+              <span className="hero-avatar-role">Full-Stack Software Developer • MNNIT Allahabad</span>
+              <div className="hero-quick-meta">
+                <span className="quick-meta-item">
+                  <MapPin size={12} className="text-cyan" /> {personalInfo.location}
+                </span>
+                <span className="quick-meta-divider">•</span>
+                <a href={`tel:${personalInfo.phoneRaw}`} className="quick-meta-item link-item">
+                  <Phone size={12} className="text-cyan" /> {personalInfo.phone}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -184,34 +233,34 @@ export default function Hero() {
                 <button
                   type="button"
                   role="tab"
-                  aria-selected={activeTab === 'gemini'}
-                  className={`terminal-tab ${activeTab === 'gemini' ? 'tab-active' : ''}`}
-                  onClick={() => setActiveTab('gemini')}
-                >
-                  <Sparkles size={13} className="tab-icon" />
-                  <span>AI-Customer-Bot</span>
-                </button>
-
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={activeTab === 'classifier'}
-                  className={`terminal-tab ${activeTab === 'classifier' ? 'tab-active' : ''}`}
-                  onClick={() => setActiveTab('classifier')}
-                >
-                  <Code2 size={13} className="tab-icon" />
-                  <span>Image-Classifier</span>
-                </button>
-
-                <button
-                  type="button"
-                  role="tab"
                   aria-selected={activeTab === 'splitmint'}
                   className={`terminal-tab ${activeTab === 'splitmint' ? 'tab-active' : ''}`}
                   onClick={() => setActiveTab('splitmint')}
                 >
                   <Terminal size={13} className="tab-icon" />
-                  <span>SplitMint</span>
+                  <span>SplitMint (Two-Pointer)</span>
+                </button>
+
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === 'rag'}
+                  className={`terminal-tab ${activeTab === 'rag' ? 'tab-active' : ''}`}
+                  onClick={() => setActiveTab('rag')}
+                >
+                  <Zap size={13} className="tab-icon" />
+                  <span>NIFN-RAG (Hybrid)</span>
+                </button>
+
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === 'gemini'}
+                  className={`terminal-tab ${activeTab === 'gemini' ? 'tab-active' : ''}`}
+                  onClick={() => setActiveTab('gemini')}
+                >
+                  <Sparkles size={13} className="tab-icon" />
+                  <span>AI-Bot</span>
                 </button>
               </div>
 
@@ -252,21 +301,21 @@ export default function Hero() {
             <div className="terminal-footer">
               <div className="terminal-status-left">
                 <CheckCircle2 size={13} className="status-check" />
-                <span>Verified Source Implementation</span>
+                <span>Verified Code Implementation</span>
               </div>
               <a
                 href={
-                  activeTab === 'gemini'
-                    ? "https://github.com/chetannit/AI-customer-Bot"
-                    : activeTab === 'classifier'
-                    ? "https://github.com/chetannit/Image-Classifier"
-                    : "https://github.com/chetannit/Splitmint"
+                  activeTab === 'splitmint'
+                    ? "https://github.com/chetannit/Splitmint"
+                    : activeTab === 'rag'
+                    ? "https://github.com/chetannit"
+                    : "https://github.com/chetannit/AI-customer-Bot"
                 }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="terminal-repo-link"
               >
-                GitHub Repository &rarr;
+                Inspect Implementation &rarr;
               </a>
             </div>
           </div>

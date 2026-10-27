@@ -4,7 +4,7 @@ import { GraduationCap, Calendar, MapPin, BookOpen, Edit3, CheckCircle2 } from '
 import './Education.css';
 
 export default function Education() {
-  const { isConfigured, placeholderNote, templates } = educationData;
+  const { isConfigured, templates } = educationData;
 
   return (
     <section id="education" className="section education-section">

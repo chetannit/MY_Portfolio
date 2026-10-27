@@ -215,6 +215,37 @@
   font-size: 0.78rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.hero-quick-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.quick-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.quick-meta-item.link-item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.quick-meta-item.link-item:hover {
+  color: var(--accent-cyan);
+}
+
+.quick-meta-divider {
+  color: var(--text-dim);
 }
 
 /* ==========================================================================

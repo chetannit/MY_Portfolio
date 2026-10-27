@@ -3,13 +3,8 @@ import { featuredProjects } from '../data/portfolioData';
 import { 
   FolderGit2, 
   ExternalLink, 
-  Sparkles, 
   CheckCircle2, 
-  Layers, 
-  Terminal, 
-  Cpu, 
-  ArrowUpRight,
-  Code
+  ArrowUpRight
 } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import './Projects.css';
@@ -20,8 +15,10 @@ export default function Projects() {
   const filteredProjects = filter === 'all' 
     ? featuredProjects 
     : filter === 'ai'
-    ? featuredProjects.filter(p => p.category.toLowerCase().includes('ai') || p.category.toLowerCase().includes('machine'))
-    : featuredProjects.filter(p => p.category.toLowerCase().includes('full-stack') || p.category.toLowerCase().includes('web'));
+    ? featuredProjects.filter(p => p.category.toLowerCase().includes('ai') || p.category.toLowerCase().includes('vector'))
+    : filter === 'fullstack'
+    ? featuredProjects.filter(p => p.category.toLowerCase().includes('full-stack') || p.category.toLowerCase().includes('algorithms'))
+    : featuredProjects.filter(p => p.category.toLowerCase().includes('vision') || p.category.toLowerCase().includes('ml'));
 
   return (
     <section id="projects" className="section projects-section">
@@ -34,10 +31,10 @@ export default function Projects() {
             <span>03. Featured Projects</span>
           </div>
           <h2 className="section-title">
-            Featured Works &amp; <span className="text-gradient">Real Implementations</span>
+            Featured Works &amp; <span className="text-gradient">Production Codebases</span>
           </h2>
           <p className="section-description">
-            Production codebases demonstrating full-stack application development, API design, and applied machine learning.
+            Production codebases demonstrating high-throughput API design, algorithmic debt minimization, and enterprise RAG search engines.
           </p>
 
           {/* Filter Pills */}
@@ -51,38 +48,88 @@ export default function Projects() {
             </button>
             <button
               type="button"
-              className={`filter-btn ${filter === 'ai' ? 'filter-active' : ''}`}
-              onClick={() => setFilter('ai')}
-            >
-              AI &amp; Machine Learning
-            </button>
-            <button
-              type="button"
               className={`filter-btn ${filter === 'fullstack' ? 'filter-active' : ''}`}
               onClick={() => setFilter('fullstack')}
             >
-              Full-Stack Web Apps
+              Full-Stack &amp; Algorithms
+            </button>
+            <button
+              type="button"
+              className={`filter-btn ${filter === 'ai' ? 'filter-active' : ''}`}
+              onClick={() => setFilter('ai')}
+            >
+              AI &amp; Vector Search
+            </button>
+            <button
+              type="button"
+              className={`filter-btn ${filter === 'cv' ? 'filter-active' : ''}`}
+              onClick={() => setFilter('cv')}
+            >
+              Machine Learning &amp; CV
             </button>
           </div>
         </div>
 
         {/* Project Cards Grid */}
         <div className="projects-grid">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <article key={project.id} className="card project-card">
               
               {/* Card Media / Custom CSS Graphic Visual */}
               <div className="project-visual-wrapper">
+                {project.id === 'splitmint' && (
+                  <div className="project-graphic graphic-splitmint">
+                    <div className="ledger-ui-mock">
+                      <div className="ledger-header-row">
+                        <span className="ledger-pill">SplitMint Debt Engine</span>
+                        <span className="ledger-amount">2-Pointer Minimization</span>
+                      </div>
+                      <div className="ledger-participants">
+                        <span className="participant-chip">Balance Accuracy: 100%</span>
+                        <span className="participant-chip chip-green">Tx Reduction: -65%</span>
+                      </div>
+                      <div className="settlement-suggest">
+                        <span className="settle-label">Directed SVG Graph:</span>
+                        <span className="settle-text">Circular group debts resolved in O(N log N)</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {project.id === 'nifn-rag' && (
+                  <div className="project-graphic graphic-rag">
+                    <div className="rag-ui-mock">
+                      <div className="rag-query-row">
+                        <span className="rag-query-badge">Bilingual Query</span>
+                        <span className="rag-lang-tag">EN / NE</span>
+                      </div>
+                      <div className="rag-search-bars">
+                        <div className="rag-bar-item">
+                          <span className="rag-bar-label">Qdrant Dense Cosine: 0.94</span>
+                          <div className="rag-progress"><span style={{ width: '94%' }} /></div>
+                        </div>
+                        <div className="rag-bar-item">
+                          <span className="rag-bar-label">BM25 Lexical Keyword: 0.88</span>
+                          <div className="rag-progress"><span style={{ width: '88%' }} /></div>
+                        </div>
+                      </div>
+                      <div className="rag-cache-chip">
+                        <span>⚡ Redis Sub-Millisecond Cache HIT</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {project.id === 'ai-customer-bot' && (
                   <div className="project-graphic graphic-bot">
                     <div className="bot-ui-mock">
                       <div className="bot-msg-user">
-                        <span className="msg-bubble user-bubble">How do I reset my credentials?</span>
+                        <span className="msg-bubble user-bubble">How do I verify transaction settlements?</span>
                       </div>
                       <div className="bot-msg-assistant">
                         <div className="bot-avatar-tag">Gemini Pro</div>
                         <span className="msg-bubble assistant-bubble">
-                          Navigate to Account Settings &gt; Security to request a password reset link.
+                          Transactions can be reconciled through the settlement ledger endpoint with 10-turn contextual history.
                         </span>
                       </div>
                       <div className="bot-ui-stats">
@@ -112,26 +159,6 @@ export default function Projects() {
                   </div>
                 )}
 
-                {project.id === 'splitmint' && (
-                  <div className="project-graphic graphic-splitmint">
-                    <div className="ledger-ui-mock">
-                      <div className="ledger-header-row">
-                        <span className="ledger-pill">Group: Karbon Split</span>
-                        <span className="ledger-amount">Equal Split Mode</span>
-                      </div>
-                      <div className="ledger-participants">
-                        <span className="participant-chip">P1: +$45.00</span>
-                        <span className="participant-chip chip-debt">P2: -$22.50</span>
-                        <span className="participant-chip chip-debt">P3: -$22.50</span>
-                      </div>
-                      <div className="settlement-suggest">
-                        <span className="settle-label">Settlement Engine:</span>
-                        <span className="settle-text">P2 &rarr; P1 ($22.50) • P3 &rarr; P1 ($22.50)</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
                 {/* Project Badge */}
                 <span className="project-badge">{project.badge}</span>
               </div>
@@ -154,6 +181,18 @@ export default function Projects() {
                   </a>
                 </div>
 
+                {/* Metrics Row */}
+                {project.metrics && project.metrics.length > 0 && (
+                  <div className="project-metrics-row">
+                    {project.metrics.map((m, mIdx) => (
+                      <div key={mIdx} className="metric-pill">
+                        <span className="metric-label">{m.label}:</span>
+                        <span className="metric-value">{m.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 {/* Description */}
                 <p className="project-description">
                   {project.description}
@@ -165,7 +204,7 @@ export default function Projects() {
                   <ul className="highlights-list">
                     {project.highlights.map((item, hIdx) => (
                       <li key={hIdx} className="highlight-item">
-                        <CheckCircle2 size={13} className="highlight-icon text-cyan" />
+                        <CheckCircle2 size={14} className="highlight-icon text-cyan" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -191,7 +230,7 @@ export default function Projects() {
                     aria-label={`View ${project.title} on GitHub (opens in a new tab)`}
                   >
                     <GithubIcon size={16} aria-hidden="true" />
-                    <span>View on GitHub</span>
+                    <span>View Repository</span>
                     <ExternalLink size={13} aria-hidden="true" />
                   </a>
                 </div>
@@ -200,14 +239,6 @@ export default function Projects() {
 
             </article>
           ))}
-        </div>
-
-        {/* Reordering & Updating Note */}
-        <div className="projects-config-note">
-          <Code size={14} className="text-cyan" />
-          <span>
-            Projects can be dynamically reordered, modified, or extended via the <code>featuredProjects</code> array in <code>src/data/portfolioData.js</code>.
-          </span>
         </div>
 
       </div>

@@ -101,9 +101,9 @@ All personal details, editable placeholders, and project cards can be configured
 export const personalInfo = {
   name: "Chetan Thakur",
   role: "Full-Stack Developer",
-  email: "your.real.email@gmail.com", // <-- Update your email address
-  linkedin: "https://linkedin.com/in/your-real-profile", // <-- Update your LinkedIn URL
-  location: "Your City, Country", // <-- Update location
+  email: "chetanthakur220@gmail.com",
+  linkedin: "https://www.linkedin.com/in/chetan-thakur-214501249/",
+  location: "Kathmandu, Nepal",
 };
 ```
 

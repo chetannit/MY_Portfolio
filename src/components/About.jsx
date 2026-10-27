@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo, aboutMe } from '../data/portfolioData';
-import { User, Code2, Cpu, Sparkles, Compass, CheckCircle2, MapPin, Mail, Edit3 } from 'lucide-react';
+import { User, Code2, Database, BrainCircuit, CheckCircle2, MapPin, Phone, GraduationCap, Sparkles } from 'lucide-react';
 import './About.css';
 
 export default function About() {
@@ -15,10 +15,10 @@ export default function About() {
             <span>01. About Me</span>
           </div>
           <h2 className="section-title">
-            Passionate About Crafting <span className="text-gradient">Impactful Software</span>
+            Passionate About Crafting <span className="text-gradient">Resilient Software</span>
           </h2>
           <p className="section-description">
-            A developer combining robust frontend interactions with Python-driven logic and machine learning integrations.
+            A software developer combining robust frontend design with Python-driven backend logic, transaction-safe database architectures, and production RAG pipelines.
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export default function About() {
           <div className="about-narrative-card card">
             <div className="narrative-badge">
               <Sparkles size={14} className="narrative-icon" />
-              <span>Developer Journey</span>
+              <span>Engineering Journey &amp; Philosophy</span>
             </div>
 
             <div className="narrative-text">
@@ -47,40 +47,40 @@ export default function About() {
                   <Code2 size={20} className="pillar-icon cyan" />
                 </div>
                 <div>
-                  <h3 className="pillar-title">Full-Stack Development</h3>
+                  <h3 className="pillar-title">Full-Stack &amp; REST APIs</h3>
                   <p className="pillar-desc">
-                    Designing responsive user interfaces with React and orchestrating modular RESTful services.
+                    Designing modular React &amp; Next.js interfaces paired with high-throughput asynchronous FastAPI and Node.js REST services.
                   </p>
                 </div>
               </div>
 
               <div className="pillar-item">
                 <div className="pillar-icon-box">
-                  <Cpu size={20} className="pillar-icon indigo" />
+                  <Database size={20} className="pillar-icon indigo" />
                 </div>
                 <div>
-                  <h3 className="pillar-title">Python &amp; AI/ML</h3>
+                  <h3 className="pillar-title">Database &amp; Transaction Safety</h3>
                   <p className="pillar-desc">
-                    Applying computer vision, wavelet feature extraction, and Google Gemini LLM API solutions.
+                    Structuring relational PostgreSQL schemas, enforcing integrity constraints, and implementing Redis caching for sub-millisecond lookups.
                   </p>
                 </div>
               </div>
 
               <div className="pillar-item">
                 <div className="pillar-icon-box">
-                  <Compass size={20} className="pillar-icon emerald" />
+                  <BrainCircuit size={20} className="pillar-icon emerald" />
                 </div>
                 <div>
-                  <h3 className="pillar-title">Continuous Growth</h3>
+                  <h3 className="pillar-title">Multilingual RAG &amp; Applied AI</h3>
                   <p className="pillar-desc">
-                    Systematic problem-solving, clean code standards, and agile project execution.
+                    Building bilingual English and Nepali retrieval-augmented pipelines with Qdrant, BM25 hybrid ranking, and LangChain orchestration.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Sidebar / Quick Stats & Editable Placeholders */}
+          {/* Sidebar / Quick Stats */}
           <div className="about-sidebar">
             
             {/* Quick Profile Overview Card */}
@@ -98,7 +98,7 @@ export default function About() {
                 </li>
                 <li className="profile-detail-item">
                   <span className="detail-label">Core Stack</span>
-                  <span className="detail-value">React • Python • AI/ML</span>
+                  <span className="detail-value">Python • FastAPI • React • Postgres</span>
                 </li>
                 <li className="profile-detail-item">
                   <span className="detail-label">Location</span>
@@ -108,12 +108,17 @@ export default function About() {
                   </span>
                 </li>
                 <li className="profile-detail-item">
-                  <span className="detail-label">Work Authorization</span>
-                  <span className="detail-value">
-                    <span className="editable-indicator">
-                      <Edit3 size={10} />
-                      <span>[Editable Field]</span>
-                    </span>
+                  <span className="detail-label">Phone</span>
+                  <a href={`tel:${personalInfo.phoneRaw}`} className="detail-value text-cyan hover:underline flex items-center gap-1">
+                    <Phone size={13} />
+                    <span>{personalInfo.phone}</span>
+                  </a>
+                </li>
+                <li className="profile-detail-item">
+                  <span className="detail-label">Alma Mater</span>
+                  <span className="detail-value flex items-center gap-1">
+                    <GraduationCap size={13} className="text-cyan" />
+                    <span>MNNIT Allahabad</span>
                   </span>
                 </li>
               </ul>
@@ -135,14 +140,14 @@ export default function About() {
             <div className="card application-callout-card">
               <div className="callout-header">
                 <CheckCircle2 size={18} className="text-cyan" />
-                <h4 className="callout-title">Hiring Focus</h4>
+                <h4 className="callout-title">Hiring Status</h4>
               </div>
               <p className="callout-desc">
-                Actively applying for entry-level / associate Software Engineering, Full-Stack Developer, and AI/ML Engineering positions.
+                Actively seeking Software Developer, Full-Stack Engineer, and Backend/AI Developer opportunities where I can solve high-impact engineering problems.
               </p>
               <div className="callout-actions">
-                <a href="#projects" className="btn btn-sm btn-primary w-full">
-                  Explore Verified Projects
+                <a href="#contact" className="btn btn-sm btn-primary w-full">
+                  Get In Touch Directly
                 </a>
               </div>
             </div>

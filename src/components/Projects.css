@@ -47,10 +47,10 @@
   gap: 2rem;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 850px) {
   .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 }
 
@@ -300,6 +300,116 @@
   font-family: var(--font-mono);
   font-size: 0.62rem;
   color: #94a3b8;
+}
+
+/* RAG Graphic */
+.graphic-rag {
+  width: 100%;
+}
+
+.rag-ui-mock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rag-query-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rag-query-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+.rag-lang-tag {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.1);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.rag-search-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.rag-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rag-bar-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+.rag-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.rag-progress span {
+  display: block;
+  height: 100%;
+  background: var(--grad-accent);
+  border-radius: 2px;
+}
+
+.rag-cache-chip {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
+
+/* Project Metrics Row */
+.project-metrics-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.metric-label {
+  color: var(--text-muted);
+}
+
+.metric-value {
+  color: var(--accent-cyan);
+  font-weight: 600;
 }
 
 /* Card Body */

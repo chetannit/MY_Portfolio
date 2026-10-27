@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { skillCategories } from '../data/portfolioData';
 import { 
   Code2, 
@@ -10,53 +10,76 @@ import {
   Terminal,
   Cpu,
   Layers,
-  GitBranch
+  GitBranch,
+  Database,
+  CheckCircle2,
+  ShieldCheck,
+  Zap,
+  Activity,
+  Flame,
+  Globe
 } from 'lucide-react';
 import './Skills.css';
 
 // Map icon strings to Lucide components
 const iconMap = {
+  Code2: Code2,
   Layout: Layout,
   Server: Server,
-  BrainCircuit: BrainCircuit,
-  Wrench: Wrench
+  Database: Database,
+  CheckCircle2: CheckCircle2,
+  Wrench: Wrench,
+  BrainCircuit: BrainCircuit
 };
 
-// Skill-specific SVG/Lucide badge icons (no emojis!)
+// Skill-specific badge icons
 const skillIconMap = {
-  React: Layers,
-  JavaScript: Code2,
-  HTML5: Layout,
-  CSS3: Layout,
   Python: Terminal,
-  "REST API Development": Server,
-  "Node.js & Express": Server,
-  "Machine Learning": Cpu,
-  "Image Classification": BrainCircuit,
-  "AI Application Development": Sparkles,
-  Git: GitBranch,
-  GitHub: GitBranch,
-  Vite: ZapIcon
+  Java: Cpu,
+  "C++": Code2,
+  SQL: Database,
+  JavaScript: Code2,
+  TypeScript: Code2,
+  FastAPI: Zap,
+  "REST APIs": Server,
+  SQLAlchemy: Database,
+  "Node.js": Server,
+  "Express.js": Server,
+  "API Integration": Globe,
+  "React.js": Layers,
+  "Next.js": Zap,
+  "Tailwind CSS": Layout,
+  "HTML5 & CSS3": Layout,
+  PostgreSQL: Database,
+  Redis: Flame,
+  Qdrant: BrainCircuit,
+  MongoDB: Database,
+  MySQL: Database,
+  "Unit Testing (Pytest)": CheckCircle2,
+  Selenium: Activity,
+  "Load Testing": Activity,
+  "End-to-End Validation": CheckCircle2,
+  "Docker & Compose": Wrench,
+  "Git & GitHub": GitBranch,
+  Linux: Terminal,
+  Nginx: Server,
+  "CI/CD": Activity,
+  "RAG & LangChain": Sparkles,
+  "Hybrid BM25 & Semantic Search": BrainCircuit,
+  "API Authentication & OAuth": ShieldCheck,
+  "JWT & bcrypt": ShieldCheck,
+  "Input Validation": ShieldCheck
 };
-
-function ZapIcon(props) {
-  return (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      {...props}
-    >
-      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-    </svg>
-  );
-}
 
 export default function Skills() {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const categories = ['All', ...skillCategories.map(c => c.category)];
+
+  const displayedCategories = selectedCategory === 'All'
+    ? skillCategories
+    : skillCategories.filter(c => c.category === selectedCategory);
+
   return (
     <section id="skills" className="section skills-section">
       <div className="container">
@@ -71,13 +94,29 @@ export default function Skills() {
             Skills &amp; <span className="text-gradient">Core Competencies</span>
           </h2>
           <p className="section-description">
-            Technologies and frameworks utilized in building modern full-stack web applications and machine learning solutions.
+            Comprehensive technical stack verified from production codebases and resume milestones. Spans systems, database architecture, testing, and applied AI.
           </p>
+
+          {/* Category Filter Pills */}
+          <div className="skills-filter-row" role="tablist" aria-label="Filter skill categories">
+            {categories.map((catName) => (
+              <button
+                key={catName}
+                type="button"
+                role="tab"
+                aria-selected={selectedCategory === catName}
+                className={`skill-filter-pill ${selectedCategory === catName ? 'active-pill' : ''}`}
+                onClick={() => setSelectedCategory(catName)}
+              >
+                {catName}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* 4 Category Cards Grid */}
+        {/* Categories Grid */}
         <div className="skills-grid">
-          {skillCategories.map((cat, idx) => {
+          {displayedCategories.map((cat, idx) => {
             const CategoryIcon = iconMap[cat.icon] || Code2;
 
             return (

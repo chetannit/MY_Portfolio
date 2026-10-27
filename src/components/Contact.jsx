@@ -10,7 +10,7 @@ import {
   Info, 
   Sparkles,
   MapPin,
-  CheckCircle2
+  Phone
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import './Contact.css';
@@ -23,6 +23,7 @@ export default function Contact() {
     message: ''
   });
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const [copiedDraft, setCopiedDraft] = useState(false);
   const [feedbackMsg, setFeedbackMsg] = useState('');
 
@@ -60,6 +61,12 @@ export default function Contact() {
     navigator.clipboard.writeText(personalInfo.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const copyPhoneToClipboard = () => {
+    navigator.clipboard.writeText(personalInfo.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const copyFullDraftToClipboard = () => {
@@ -131,6 +138,41 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Direct Phone & WhatsApp Item */}
+              <div className="direct-item phone-item">
+                <div className="item-icon-box">
+                  <Phone size={18} className="text-cyan" />
+                </div>
+                <div className="item-details">
+                  <span className="item-label">Direct Phone &amp; WhatsApp</span>
+                  <div className="item-value-row">
+                    <a href={`tel:${personalInfo.phoneRaw}`} className="item-link">
+                      {personalInfo.phone}
+                    </a>
+                    <div className="phone-actions">
+                      <a 
+                        href={personalInfo.whatsappUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="whatsapp-badge-link"
+                        title="Chat on WhatsApp"
+                      >
+                        WhatsApp
+                      </a>
+                      <button
+                        type="button"
+                        className="copy-btn"
+                        onClick={copyPhoneToClipboard}
+                        title="Copy phone number"
+                        aria-label="Copy phone number"
+                      >
+                        {copiedPhone ? <Check size={14} className="text-emerald" /> : <Copy size={14} />}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* GitHub Item */}
               <div className="direct-item">
                 <div className="item-icon-box">
@@ -150,7 +192,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* LinkedIn Placeholder Item */}
+              {/* LinkedIn Profile Item */}
               <div className="direct-item">
                 <div className="item-icon-box">
                   <LinkedinIcon size={18} className="text-cyan" />
@@ -163,10 +205,9 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="item-link flex items-center gap-1"
                   >
-                    <span>[Your LinkedIn Profile]</span>
+                    <span>linkedin.com/in/{personalInfo.linkedinUsername}</span>
                     <ExternalLink size={12} />
                   </a>
-                  <span className="editable-subtext">Configure in portfolioData.js</span>
                 </div>
               </div>
 

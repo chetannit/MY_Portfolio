@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { personalInfo, navLinks } from '../data/portfolioData';
-import { Menu, X, ExternalLink, Code } from 'lucide-react';
-import { GithubIcon } from './SocialIcons';
+import { Menu, X, ExternalLink } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -100,6 +100,19 @@ export default function Navbar() {
         {/* Header Right Actions */}
         <div className="navbar-actions">
           <a
+            href={personalInfo.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-sm btn-github"
+            aria-label="View Chetan Thakur's LinkedIn Profile (opens in new tab)"
+            title="View Chetan Thakur on LinkedIn"
+          >
+            <LinkedinIcon size={16} aria-hidden="true" />
+            <span className="github-text">LinkedIn</span>
+            <ExternalLink size={12} className="github-ext" aria-hidden="true" />
+          </a>
+
+          <a
             href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
@@ -108,7 +121,7 @@ export default function Navbar() {
             title="View chetannit on GitHub"
           >
             <GithubIcon size={16} aria-hidden="true" />
-            <span className="github-text">View GitHub</span>
+            <span className="github-text">GitHub</span>
             <ExternalLink size={12} className="github-ext" aria-hidden="true" />
           </a>
 
@@ -164,6 +177,19 @@ export default function Navbar() {
         </nav>
 
         <div className="mobile-drawer-footer">
+          <a
+            href={personalInfo.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-secondary mobile-github-btn"
+            style={{ marginBottom: '0.75rem' }}
+            onClick={closeMobileMenu}
+          >
+            <LinkedinIcon size={18} aria-hidden="true" />
+            <span>View LinkedIn Profile</span>
+            <ExternalLink size={14} aria-hidden="true" />
+          </a>
+
           <a
             href={personalInfo.github}
             target="_blank"
